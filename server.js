@@ -1,7 +1,14 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-
+const cors = require('cors');
 const app = express();
+
+// ✅ Allow all origins (use carefully in public apps)
+app.use(cors({
+  origin: '*', // allows any origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // Update this to your actual backend API (even if it's HTTP and doesn't support CORS)
 const TARGET_API = 'https://49.207.10.152:8081';

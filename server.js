@@ -16,6 +16,7 @@ const TARGET_API = 'https://49.207.10.152:8081';
 app.use('/api', createProxyMiddleware({
   target: TARGET_API,
   changeOrigin: true,
+  secure:false,
   pathRewrite: { '^/api': '' },
   onProxyReq: (proxyReq, req, res) => {
     console.log(`[PROXY] ${req.method} ${req.originalUrl} → ${TARGET_API}`);
